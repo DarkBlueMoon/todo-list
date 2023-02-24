@@ -7,6 +7,47 @@
     <title>Document</title>
   </head>
   <body>
+    <main class="container">
+      <h1>Default Project</h1>
+      <div class="todo-container">
+        <div class="todo-item">
+          <button class="complete">Complete?</button>
+          <p class="task-name">Default Task</p>
+        </div>
+      </div>
+      <button type="button" class="add-task">+ Add Task</button>
+
+      <div class="form-container">
+        <form action="" class="task-form">
+          <div class="form-row">
+            <label for="task-name">Task:</label>
+            <input type="text" id="task-name" name="task-name" required />
+          </div>
+          <div class="form-row">
+            <label for="task-desc">Details:</label>
+            <input type="text" id="task-desc" name="task-desc" />
+          </div>
+          <div class="form-row">
+            <label for="task-priority">Priority:</label>
+            <select name="task-priority" id="task-priority">
+              <option value="">--Please choose an option--</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-btn-container">
+            <div class="form-button submit">
+              <button type="button" class="submit-btn">Submit</button>
+            </div>
+            <div class="form-button close">
+              <button type="button" class="close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
     <script src="main.js"></script>
   </body>
 </html>

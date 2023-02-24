@@ -1,43 +1,40 @@
-// const prompt = require("prompt-sync")({ sigint: true });
-// import createTodo from "./todoItem";
+import "./style.css";
+import screenController from "./screenController";
 
-import createTodo from "./todoItem";
+screenController();
 
-function init() {
-  const arr = [];
-  for (let i = 0; i < 10; i += 1) {
-    arr.push(createTodo("A", "A", 1));
-  }
+// import todoItemFactory from "./todoItem";
+// import projectItemFactory from "./projectItem";
 
-  // const test = createTodo();
-  // console.log(test.getTitle());
-  // test.setTitle("Title");
-  // console.log(test.getTitle());
-  // console.log(test);
+// const todoItem = todoItemFactory("Title", "Desc", 1);
+// const todoItem2 = todoItemFactory("Title2", "Desc2", 1);
+// const todoItem3 = todoItemFactory("Title3", "Desc3", 1);
 
-  console.dir(arr);
-}
+// const defaultProj = projectItemFactory("Default");
+// defaultProj.addTodoToArray(todoItem);
+// defaultProj.addTodoToArray(todoItem2);
+// defaultProj.addTodoToArray(todoItem3);
+// console.dir(defaultProj);
 
-init();
+// console.log(defaultProj.getNumOfTodos());
+
+// const defaultProj = createProjectItem();
+// defaultProj.addTodoToArray(createTodoItem("Title", "Desc", 1));
+// defaultProj.addTodoToArray(createTodoItem("Title2", "Desc2", 2));
+// defaultProj.addTodoToArray(createTodoItem("Title3", "Desc3", 3));
+
+// console.log(defaultProj.getNumOfTodos());
+// console.log(defaultProj.getArrayOfTodos());
+
 // function init() {
-//   console.log("Welcome to your todo list!");
-
-//   let running = true;
-
-//   while (running) {
-//     console.log("Would you like to...");
-//     console.log("1: View default project?");
-//     console.log("2: Create a new project?");
-
-//     let choice = Number(prompt("Choice here: "));
-
-//     if (choice === 1) {
-//       accessProject();
-//     } else {
-//       return;
-//     }
-//   }
+// const arr = [];
+// for (let i = 0; i < 10; i += 1) {
+//   arr.push(createTodoItem("A", "A", 1));
 // }
+// console.dir(arr);
+// }
+
+// init();
 
 // function createTodo() {
 //   //    Prompt for todo name, description, priority.
@@ -62,7 +59,7 @@ init();
 //   console.log("2: View all todos?");
 //   console.log("3: Delete a todo?");
 
-//   let choice = Number(prompt("Choice here: "));
+//   // let choice = Number(prompt("Choice here: "));
 
 //   switch (choice) {
 //     case 1:
@@ -77,6 +74,18 @@ init();
 //     default:
 //       break;
 //   }
+// }
+
+// function init() {
+//   console.log("Welcome to your todo list!");
+
+//   let running = true;
+
+//   // while (running) {
+//   //   console.log("Would you like to...");
+//   //   console.log("1: View default project?");
+//   //   console.log("2: Create a new project?");
+//   // }
 // }
 
 // init();

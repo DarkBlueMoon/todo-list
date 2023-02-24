@@ -1,60 +1,76 @@
-// const todoItemProto = {
-//   getTitle() {
-//     return this.title;
-//   },
-//   setTitle(newTitle) {
-//     this.title = newTitle;
-//   },
-//   getDesc() {
-//     return this.desc;
-//   },
-//   setDesc(newDesc) {
-//     this.desc = newDesc;
-//   },
-//   getPriority() {
-//     return this.priority;
-//   },
-//   setPriority(newPriority) {
-//     this.priority = newPriority;
-//   },
-// };
+// export default function createTodoItem(itemTitle, itemDesc, itemPriority) {
+//   let title = itemTitle;
+//   let desc = itemDesc;
+//   let priority = itemPriority;
+//   let completed = false;
 
-// function createTodo(title, desc, priority) {
-//   const todo = Object.create(todoItemProto);
-//   todo.title = title;
-//   todo.desc = desc;
-//   todo.priority = priority;
-//   return todo;
+//   const setTitle = (newTitle) => {
+//     title = newTitle;
+//   };
+//   const getTitle = () => title;
+
+//   const setDesc = (newDesc) => {
+//     desc = newDesc;
+//   };
+//   const getDesc = () => desc;
+
+//   const setPriority = (newPriority) => {
+//     priority = newPriority;
+//   };
+//   const getPriority = () => priority;
+
+//   const getCompletedStatus = () => completed;
+//   const toggleCompleted = () => {
+//     completed = true;
+//   };
+
+//   return {
+//     setTitle,
+//     getTitle,
+//     setDesc,
+//     getDesc,
+//     setPriority,
+//     getPriority,
+//     getCompletedStatus,
+//     toggleCompleted,
+//   };
 // }
 
-function createTodo() {
-  let title = "";
-  let desc = "";
-  let priority = 0;
+const todoMethods = {
+  setTitle(newTitle) {
+    this.title = newTitle;
+  },
+  getTitle() {
+    return this.title;
+  },
+  setDesc(newDesc) {
+    this.desc = newDesc;
+  },
+  getDesc() {
+    return this.desc;
+  },
+  setPriority(newPriority) {
+    this.priority = newPriority;
+  },
+  getPriority() {
+    return this.priority;
+  },
+  toggleCompleted() {
+    this.completed = true;
+  },
+  getCompletedStatus() {
+    return this.completed;
+  },
+};
 
-  const setTitle = (newTitle) => {
-    title = newTitle;
-  };
-  const getTitle = () => title;
+const todoItemFactory = (title, desc, priority) => {
+  const todo = Object.create(todoMethods);
+  todo.title = title;
+  todo.desc = desc;
+  todo.priority = priority;
+  todo.completed = false;
 
-  const setDesc = (newDesc) => {
-    desc = newDesc;
-  };
-  const getDesc = () => desc;
+  return todo;
+};
 
-  const setPriority = (newPriority) => {
-    priority = newPriority;
-  };
-  const getPriority = () => priority;
-
-  return {
-    setTitle,
-    getTitle,
-    setDesc,
-    getDesc,
-    setPriority,
-    getPriority,
-  };
-}
-
-export default createTodo;
+export default todoItemFactory;
