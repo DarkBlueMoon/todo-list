@@ -1,7 +1,7 @@
 import "./style.css";
-import screenController from "./screenController";
+import ScreenController from "./screenController";
 
-screenController();
+ScreenController();
 
 // import todoItemFactory from "./todoItem";
 // import projectItemFactory from "./projectItem";

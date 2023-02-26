@@ -1,4 +1,5 @@
-import TodoController from "./TodoController";
+import TodoController from "./todoController";
+import todoItem from "./todoItem";
 
 function createNewTaskFrag(taskName, index) {
   const newTask = `
@@ -11,33 +12,16 @@ function createNewTaskFrag(taskName, index) {
   return document.createRange().createContextualFragment(newTask);
 }
 
-export default function screenController() {
+export default function ScreenController() {
   const todoController = TodoController();
 
-  // const addTaskBtn = document.querySelector(".add-task");
-  // const formContainer = document.querySelector(".form-container");
+  const addTaskBtn = document.querySelector(".add-task");
+  const formContainer = document.querySelector(".form-container");
   const projName = document.querySelector(".project-title");
   const todoContainer = document.querySelector(".todo-container");
-  // const taskForm = document.querySelector(".task-form");
-  // const submitBtn = document.querySelector(".submit-btn");
-  // const closeBtn = document.querySelector(".close-btn");
-
-  // addTaskBtn.addEventListener("click", () => {
-  //   formContainer.style.visibility = "visible";
-  // });
-
-  // closeBtn.addEventListener("click", () => {
-  //   formContainer.style.visibility = "hidden";
-  // });
-
-  // submitBtn.addEventListener("click", () => {
-  //   // const formElems = taskForm.elements;
-
-  //   const taskName = taskForm.elements["task-name"].value;
-
-  //   todoContainer.appendChild(createNewTaskFrag(taskName));
-  //   taskForm.reset();
-  // });
+  const taskForm = document.querySelector(".task-form");
+  const submitBtn = document.querySelector(".submit-btn");
+  const closeBtn = document.querySelector(".close-btn");
 
   const render = () => {
     todoContainer.textContent = "";
@@ -62,9 +46,30 @@ export default function screenController() {
         render();
       }
     });
+
+    addTaskBtn.addEventListener("click", () => {
+      formContainer.style.visibility = "visible";
+    });
+
+    closeBtn.addEventListener("click", () => {
+      formContainer.style.visibility = "hidden";
+    });
+
+    submitBtn.addEventListener("click", () => {
+      // const formElems = taskForm.elements;
+
+      const taskName = taskForm.elements["task-name"].value;
+
+      const currProject = todoController.getCurrProject();
+      currProject.addTodo(todoItem(taskName, "", ""));
+      render();
+
+      // todoContainer.appendChild(createNewTaskFrag(taskName));
+      taskForm.reset();
+    });
   };
 
   // Initial render.
   render();
-  setupEventListeners(todoContainer, todoController);
+  setupEventListeners();
 }
