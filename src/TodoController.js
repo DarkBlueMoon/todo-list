@@ -4,9 +4,9 @@ import todoItem from "./todoItem";
 export default function TodoController() {
   const projects = [];
   let currProject = projectItem("default");
-  currProject.addTodoToArray(todoItem("Title1", "Desc1", "1"));
-  currProject.addTodoToArray(todoItem("Title2", "Desc2", "2"));
-  currProject.addTodoToArray(todoItem("Title3", "Desc3", "3"));
+  currProject.addTodo(todoItem("Title1", "Desc1", "1"));
+  currProject.addTodo(todoItem("Title2", "Desc2", "2"));
+  currProject.addTodo(todoItem("Title3", "Desc3", "3"));
 
   const addProject = (project) => {
     projects.push(project);

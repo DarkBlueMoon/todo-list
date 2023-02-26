@@ -5,8 +5,11 @@ const projectMethods = {
   getProjName() {
     return this.projName;
   },
-  addTodoToArray(todoObject) {
+  addTodo(todoObject) {
     this.arrayOfTodos.push(todoObject);
+  },
+  removeTodo(index) {
+    this.arrayOfTodos.splice(index, 1);
   },
   getNumOfTodos() {
     return this.arrayOfTodos.length;

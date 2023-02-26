@@ -1,8 +1,8 @@
 import TodoController from "./TodoController";
 
-function createNewTaskFrag(taskName) {
+function createNewTaskFrag(taskName, index) {
   const newTask = `
-    <div class="todo-item">
+    <div class="todo-item" data-index="${index}">
       <button class="complete">Complete?</button>
       <p class="task-name">${taskName}</p>
     </div>
@@ -47,11 +47,24 @@ export default function screenController() {
 
     const currProjectTodos = currProject.getArrayOfTodos();
 
-    currProjectTodos.forEach((todo) => {
-      todoContainer.appendChild(createNewTaskFrag(todo.getTitle()));
+    currProjectTodos.forEach((todo, index) => {
+      todoContainer.appendChild(createNewTaskFrag(todo.getTitle(), index));
+    });
+  };
+
+  const setupEventListeners = () => {
+    todoContainer.addEventListener("click", (ev) => {
+      const { target } = ev;
+
+      if (target.classList.contains("complete")) {
+        const currProject = todoController.getCurrProject();
+        currProject.removeTodo(parseInt(target.dataset.index, 10));
+        render();
+      }
     });
   };
 
   // Initial render.
   render();
+  setupEventListeners(todoContainer, todoController);
 }
