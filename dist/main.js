@@ -110,6 +110,16 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/TodoController.js":
+/*!*******************************!*\
+  !*** ./src/TodoController.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ TodoController)\n/* harmony export */ });\n/* harmony import */ var _projectItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projectItem */ \"./src/projectItem.js\");\n/* harmony import */ var _todoItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todoItem */ \"./src/todoItem.js\");\n\n\n\nfunction TodoController() {\n  const projects = [];\n  let currProject = (0,_projectItem__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"default\");\n  currProject.addTodoToArray((0,_todoItem__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\"Title1\", \"Desc1\", \"1\"));\n  currProject.addTodoToArray((0,_todoItem__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\"Title2\", \"Desc2\", \"2\"));\n  currProject.addTodoToArray((0,_todoItem__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\"Title3\", \"Desc3\", \"3\"));\n\n  const addProject = (project) => {\n    projects.push(project);\n  };\n\n  // Most likely index will be a data attribute\n  const removeProject = (index) => {\n    projects.splice(index, 1);\n  };\n\n  const getCurrProject = () => currProject;\n\n  const setCurrProject = (project) => {\n    currProject = project;\n  };\n\n  return {\n    addProject,\n    removeProject,\n    getCurrProject,\n    setCurrProject,\n  };\n}\n\n\n//# sourceURL=webpack://todo-list/./src/TodoController.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -120,13 +130,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 
 /***/ }),
 
+/***/ "./src/projectItem.js":
+/*!****************************!*\
+  !*** ./src/projectItem.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst projectMethods = {\n  setProjName(newProjName) {\n    this.projName = newProjName;\n  },\n  getProjName() {\n    return this.projName;\n  },\n  addTodoToArray(todoObject) {\n    this.arrayOfTodos.push(todoObject);\n  },\n  getNumOfTodos() {\n    return this.arrayOfTodos.length;\n  },\n  getArrayOfTodos() {\n    return this.arrayOfTodos;\n  },\n};\n\nconst projectItem = (projName) => {\n  const project = Object.create(projectMethods);\n  project.projName = projName;\n  project.arrayOfTodos = [];\n\n  return project;\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (projectItem);\n\n\n//# sourceURL=webpack://todo-list/./src/projectItem.js?");
+
+/***/ }),
+
 /***/ "./src/screenController.js":
 /*!*********************************!*\
   !*** ./src/screenController.js ***!
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ screenController)\n/* harmony export */ });\nfunction createNewTaskFrag(taskName) {\n  const newTask = `\n    <div class=\"todo-item\">\n      <button class=\"complete\">Complete?</button>\n      <p class=\"task-name\">${taskName}</p>\n    </div>\n  `;\n\n  return document.createRange().createContextualFragment(newTask);\n}\n\nfunction screenController() {\n  const addTaskBtn = document.querySelector(\".add-task\");\n  const formContainer = document.querySelector(\".form-container\");\n  const todoContainer = document.querySelector(\".todo-container\");\n  const taskForm = document.querySelector(\".task-form\");\n  const submitBtn = document.querySelector(\".submit-btn\");\n  const closeBtn = document.querySelector(\".close-btn\");\n\n  addTaskBtn.addEventListener(\"click\", () => {\n    // console.log(\"clicked button\");\n    formContainer.style.visibility = \"visible\";\n  });\n\n  closeBtn.addEventListener(\"click\", () => {\n    formContainer.style.visibility = \"hidden\";\n  });\n\n  submitBtn.addEventListener(\"click\", () => {\n    // const formElems = taskForm.elements;\n\n    const taskName = taskForm.elements[\"task-name\"].value;\n\n    todoContainer.appendChild(createNewTaskFrag(taskName));\n    taskForm.reset();\n  });\n}\n\n\n//# sourceURL=webpack://todo-list/./src/screenController.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ screenController)\n/* harmony export */ });\n/* harmony import */ var _TodoController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TodoController */ \"./src/TodoController.js\");\n\n\nfunction createNewTaskFrag(taskName) {\n  const newTask = `\n    <div class=\"todo-item\">\n      <button class=\"complete\">Complete?</button>\n      <p class=\"task-name\">${taskName}</p>\n    </div>\n  `;\n\n  return document.createRange().createContextualFragment(newTask);\n}\n\nfunction screenController() {\n  const todoController = (0,_TodoController__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n\n  // const addTaskBtn = document.querySelector(\".add-task\");\n  // const formContainer = document.querySelector(\".form-container\");\n  const projName = document.querySelector(\".project-title\");\n  const todoContainer = document.querySelector(\".todo-container\");\n  // const taskForm = document.querySelector(\".task-form\");\n  // const submitBtn = document.querySelector(\".submit-btn\");\n  // const closeBtn = document.querySelector(\".close-btn\");\n\n  // addTaskBtn.addEventListener(\"click\", () => {\n  //   formContainer.style.visibility = \"visible\";\n  // });\n\n  // closeBtn.addEventListener(\"click\", () => {\n  //   formContainer.style.visibility = \"hidden\";\n  // });\n\n  // submitBtn.addEventListener(\"click\", () => {\n  //   // const formElems = taskForm.elements;\n\n  //   const taskName = taskForm.elements[\"task-name\"].value;\n\n  //   todoContainer.appendChild(createNewTaskFrag(taskName));\n  //   taskForm.reset();\n  // });\n\n  const render = () => {\n    todoContainer.textContent = \"\";\n\n    const currProject = todoController.getCurrProject();\n    projName.textContent = currProject.getProjName();\n\n    const currProjectTodos = currProject.getArrayOfTodos();\n\n    currProjectTodos.forEach((todo) => {\n      todoContainer.appendChild(createNewTaskFrag(todo.getTitle()));\n    });\n  };\n\n  // Initial render.\n  render();\n}\n\n\n//# sourceURL=webpack://todo-list/./src/screenController.js?");
+
+/***/ }),
+
+/***/ "./src/todoItem.js":
+/*!*************************!*\
+  !*** ./src/todoItem.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// export default function createTodoItem(itemTitle, itemDesc, itemPriority) {\n//   let title = itemTitle;\n//   let desc = itemDesc;\n//   let priority = itemPriority;\n//   let completed = false;\n\n//   const setTitle = (newTitle) => {\n//     title = newTitle;\n//   };\n//   const getTitle = () => title;\n\n//   const setDesc = (newDesc) => {\n//     desc = newDesc;\n//   };\n//   const getDesc = () => desc;\n\n//   const setPriority = (newPriority) => {\n//     priority = newPriority;\n//   };\n//   const getPriority = () => priority;\n\n//   const getCompletedStatus = () => completed;\n//   const toggleCompleted = () => {\n//     completed = true;\n//   };\n\n//   return {\n//     setTitle,\n//     getTitle,\n//     setDesc,\n//     getDesc,\n//     setPriority,\n//     getPriority,\n//     getCompletedStatus,\n//     toggleCompleted,\n//   };\n// }\n\nconst todoMethods = {\n  setTitle(newTitle) {\n    this.title = newTitle;\n  },\n  getTitle() {\n    return this.title;\n  },\n  setDesc(newDesc) {\n    this.desc = newDesc;\n  },\n  getDesc() {\n    return this.desc;\n  },\n  setPriority(newPriority) {\n    this.priority = newPriority;\n  },\n  getPriority() {\n    return this.priority;\n  },\n  toggleCompleted() {\n    this.completed = true;\n  },\n  getCompletedStatus() {\n    return this.completed;\n  },\n};\n\nconst todoItem = (title, desc, priority) => {\n  const todo = Object.create(todoMethods);\n  todo.title = title;\n  todo.desc = desc;\n  todo.priority = priority;\n  todo.completed = false;\n\n  return todo;\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (todoItem);\n\n\n//# sourceURL=webpack://todo-list/./src/todoItem.js?");
 
 /***/ })
 
