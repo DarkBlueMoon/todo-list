@@ -12,6 +12,12 @@ function createNewTaskFrag(taskName, index) {
   return document.createRange().createContextualFragment(newTask);
 }
 
+function createNewProjFrag(projName) {
+  const newProj = `<button type="button" class="project ${projName.toLowerCase()}">${projName}</button>`;
+
+  return document.createRange().createContextualFragment(newProj);
+}
+
 export default function ScreenController() {
   const todoController = TodoController();
 
@@ -22,8 +28,9 @@ export default function ScreenController() {
   const taskForm = document.querySelector(".task-form");
   const submitBtn = document.querySelector(".submit-btn");
   const closeBtn = document.querySelector(".close-btn");
+  const projContainer = document.querySelector(".projects-container");
 
-  const render = () => {
+  const renderTasks = () => {
     todoContainer.textContent = "";
 
     const currProject = todoController.getCurrProject();
@@ -34,6 +41,21 @@ export default function ScreenController() {
     currProjectTodos.forEach((todo, index) => {
       todoContainer.appendChild(createNewTaskFrag(todo.getTitle(), index));
     });
+  };
+
+  const renderProjects = () => {
+    projContainer.textContent = "";
+    const projectArray = todoController.getProjArr();
+
+    projectArray.forEach((proj) => {
+      projContainer.appendChild(createNewProjFrag(proj.getProjName()));
+    });
+  };
+
+  const render = () => {
+    renderTasks();
+    renderProjects();
+    console.dir(todoController.getProjArr());
   };
 
   const setupEventListeners = () => {
@@ -57,15 +79,12 @@ export default function ScreenController() {
     });
 
     submitBtn.addEventListener("click", () => {
-      // const formElems = taskForm.elements;
-
       const taskName = taskForm.elements["task-name"].value;
 
       const currProject = todoController.getCurrProject();
       currProject.addTodo(todoItem(taskName, "", ""));
       render();
 
-      // todoContainer.appendChild(createNewTaskFrag(taskName));
       taskForm.reset();
     });
   };

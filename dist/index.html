@@ -4,53 +4,58 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo List</title>
   </head>
   <body>
-    <main class="container">
-      <h1 class="project-title">Default Project</h1>
+    <div class="container">
+      <section class="sidebar">
+        <nav class="navigation">
+          <div class="projects-container"></div>
+          <div class="add-new-project">
+            <button type="button" class="add-project">+ New Project</button>
+          </div>
+        </nav>
+      </section>
+      <section class="project-content">
+        <h1 class="project-title">Default Project</h1>
 
-      <div class="todo-container">
-        <!-- <div class="todo-item">
-          <button class="complete">Complete?</button>
-          <p class="task-name">Default Task</p>
-        </div> -->
-      </div>
-      <!-- TODO: Create clickable interface for switching projects.
+        <div class="todo-container"></div>
+        <!-- TODO: Create clickable interface for switching projects.
       Includes changing currProject in todoController
       rendering currProject's Todos on screen. -->
-      <button type="button" class="add-task">+ Add Task</button>
+        <button type="button" class="add-task">+ Add Task</button>
 
-      <div class="form-container">
-        <form action="" class="task-form">
-          <div class="form-row">
-            <label for="task-name">Task:</label>
-            <input type="text" id="task-name" name="task-name" required />
-          </div>
-          <div class="form-row">
-            <label for="task-desc">Details:</label>
-            <input type="text" id="task-desc" name="task-desc" />
-          </div>
-          <div class="form-row">
-            <label for="task-priority">Priority:</label>
-            <select name="task-priority" id="task-priority">
-              <option value="">--Please choose an option--</option>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </select>
-          </div>
-          <div class="form-btn-container">
-            <div class="form-button submit">
-              <button type="button" class="submit-btn">Submit</button>
+        <div class="form-container">
+          <form action="" class="task-form">
+            <div class="form-row">
+              <label for="task-name">Task:</label>
+              <input type="text" id="task-name" name="task-name" required />
             </div>
-            <div class="form-button close">
-              <button type="button" class="close-btn">Close</button>
+            <div class="form-row">
+              <label for="task-desc">Details:</label>
+              <input type="text" id="task-desc" name="task-desc" />
             </div>
-          </div>
-        </form>
-      </div>
-    </main>
+            <div class="form-row">
+              <label for="task-priority">Priority:</label>
+              <select name="task-priority" id="task-priority">
+                <option value="">--Please choose an option--</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="form-btn-container">
+              <div class="form-button submit">
+                <button type="button" class="submit-btn">Submit</button>
+              </div>
+              <div class="form-button close">
+                <button type="button" class="close-btn">Close</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
 
     <script src="main.js"></script>
   </body>

@@ -9,9 +9,30 @@ body {
 }
 
 .container {
+  display: flex;
+}
+
+.navigation {
+  width: 300px;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-project {
+  width: 100%;
+}
+
+.project-content {
   margin: auto;
   text-align: center;
   width: 960px;
+  /* 
+  display: flex;
+  height: 90%;
+  justify-content: space-between; */
 }
 
 .todo-item {
