@@ -3,8 +3,8 @@ import todoItem from "./todoItem";
 
 function createNewTaskFrag(taskName, index) {
   const newTask = `
-    <div class="todo-item" data-index="${index}">
-      <button class="complete">Complete?</button>
+    <div class="todo-item">
+      <button class="complete" data-index="${index}">Complete?</button>
       <p class="task-name">${taskName}</p>
     </div>
   `;
@@ -39,6 +39,7 @@ export default function ScreenController() {
   const setupEventListeners = () => {
     todoContainer.addEventListener("click", (ev) => {
       const { target } = ev;
+      console.dir(target);
 
       if (target.classList.contains("complete")) {
         const currProject = todoController.getCurrProject();
