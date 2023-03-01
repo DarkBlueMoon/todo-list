@@ -21,43 +21,37 @@
         </nav>
       </section>
       <section class="project-content">
-        <h1 class="project-title">Default Project</h1>
+        <h1 class="project-title"></h1>
 
         <div class="todo-container"></div>
-        <!-- TODO: Create clickable interface for switching projects.
-      Includes changing currProject in todoController
-      rendering currProject's Todos on screen. -->
         <button type="button" class="add-task">+ Add Task</button>
 
-        <!-- TODO: Replace form with just a div with inputs -->
-        <div class="form-container">
-          <form action="" class="task-form">
-            <div class="form-row">
-              <label for="task-name">Task:</label>
-              <input type="text" id="task-name" name="task-name" required />
+        <div class="new-task-container">
+          <div class="row">
+            <label for="task-name">Task:</label>
+            <input type="text" id="task-name" name="task-name" required />
+          </div>
+          <div class="row">
+            <label for="task-desc">Details:</label>
+            <input type="text" id="task-desc" name="task-desc" />
+          </div>
+          <div class="row">
+            <label for="task-priority">Priority:</label>
+            <select name="task-priority" id="task-priority">
+              <option value="">--Please choose an option--</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="btn-container">
+            <div class="form-button submit">
+              <button type="button" class="submit-btn">Submit</button>
             </div>
-            <div class="form-row">
-              <label for="task-desc">Details:</label>
-              <input type="text" id="task-desc" name="task-desc" />
+            <div class="form-button close">
+              <button type="button" class="close-btn">Close</button>
             </div>
-            <div class="form-row">
-              <label for="task-priority">Priority:</label>
-              <select name="task-priority" id="task-priority">
-                <option value="">--Please choose an option--</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </select>
-            </div>
-            <div class="form-btn-container">
-              <div class="form-button submit">
-                <button type="button" class="submit-btn">Submit</button>
-              </div>
-              <div class="form-button close">
-                <button type="button" class="close-btn">Close</button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
       </section>
     </div>
