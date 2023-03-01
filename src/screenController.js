@@ -12,8 +12,8 @@ function createNewTaskFrag(taskName, index) {
   return document.createRange().createContextualFragment(newTask);
 }
 
-function createNewProjFrag(projName) {
-  const newProj = `<button type="button" class="project ${projName.toLowerCase()}">${projName}</button>`;
+function createNewProjFrag(projName, index) {
+  const newProj = `<button type="button" class="project" data-index="${index}">${projName}</button>`;
 
   return document.createRange().createContextualFragment(newProj);
 }
@@ -42,14 +42,9 @@ export default function ScreenController() {
     projContainer.textContent = "";
     const projectArray = todoController.getProjArr();
 
-    projectArray.forEach((proj) => {
-      projContainer.appendChild(createNewProjFrag(proj.getProjName()));
+    projectArray.forEach((proj, index) => {
+      projContainer.appendChild(createNewProjFrag(proj.getProjName(), index));
     });
-  };
-
-  const render = () => {
-    renderTasks();
-    renderProjects();
   };
 
   const setupFormListeners = () => {
@@ -100,6 +95,15 @@ export default function ScreenController() {
     });
   };
 
+  const setupProjButtonListeners = () => {
+    projContainer.addEventListener("click", (ev) => {
+      const { target } = ev;
+
+      todoController.setCurrProject(target.dataset.index);
+      renderTasks();
+    });
+  };
+
   const setupEventListeners = () => {
     todoContainer.addEventListener("click", (ev) => {
       const { target } = ev;
@@ -113,9 +117,11 @@ export default function ScreenController() {
 
     setupFormListeners();
     setupNavListeners();
+    setupProjButtonListeners();
   };
 
   // Initial render.
-  render();
+  renderTasks();
+  renderProjects();
   setupEventListeners();
 }

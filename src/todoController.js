@@ -1,5 +1,4 @@
 import projectItem from "./projectItem";
-import todoItem from "./todoItem";
 
 export default function TodoController() {
   const projects = [];
@@ -16,8 +15,8 @@ export default function TodoController() {
 
   const getCurrProject = () => currProject;
 
-  const setCurrProject = (project) => {
-    currProject = project;
+  const setCurrProject = (projectIndex) => {
+    currProject = projects[projectIndex];
   };
 
   (() => {
@@ -27,11 +26,7 @@ export default function TodoController() {
     addProject("Errands");
   })();
 
-  setCurrProject(projects[1]);
-
-  currProject.addTodo(todoItem("Title1", "Desc1", "1"));
-  currProject.addTodo(todoItem("Title2", "Desc2", "2"));
-  currProject.addTodo(todoItem("Title3", "Desc3", "3"));
+  setCurrProject(0);
 
   const getProjArr = () => projects;
 
