@@ -20,17 +20,12 @@ function createNewProjFrag(projName) {
 
 export default function ScreenController() {
   const todoController = TodoController();
-
-  const addTaskBtn = document.querySelector(".add-task");
-  const formContainer = document.querySelector(".form-container");
-  const projName = document.querySelector(".project-title");
   const todoContainer = document.querySelector(".todo-container");
-  const taskForm = document.querySelector(".task-form");
-  const submitBtn = document.querySelector(".submit-btn");
-  const closeBtn = document.querySelector(".close-btn");
   const projContainer = document.querySelector(".projects-container");
 
   const renderTasks = () => {
+    const projName = document.querySelector(".project-title");
+
     todoContainer.textContent = "";
 
     const currProject = todoController.getCurrProject();
@@ -55,27 +50,21 @@ export default function ScreenController() {
   const render = () => {
     renderTasks();
     renderProjects();
-    console.dir(todoController.getProjArr());
   };
 
-  const setupEventListeners = () => {
-    todoContainer.addEventListener("click", (ev) => {
-      const { target } = ev;
-      console.dir(target);
-
-      if (target.classList.contains("complete")) {
-        const currProject = todoController.getCurrProject();
-        currProject.removeTodo(parseInt(target.dataset.index, 10));
-        render();
-      }
-    });
+  const setupFormListeners = () => {
+    const addTaskBtn = document.querySelector(".add-task");
+    const formContainer = document.querySelector(".form-container");
+    const submitBtn = document.querySelector(".submit-btn");
+    const closeBtn = document.querySelector(".close-btn");
+    const taskForm = document.querySelector(".task-form");
 
     addTaskBtn.addEventListener("click", () => {
-      formContainer.style.visibility = "visible";
+      formContainer.classList.add("active");
     });
 
     closeBtn.addEventListener("click", () => {
-      formContainer.style.visibility = "hidden";
+      formContainer.classList.remove("active");
     });
 
     submitBtn.addEventListener("click", () => {
@@ -83,10 +72,47 @@ export default function ScreenController() {
 
       const currProject = todoController.getCurrProject();
       currProject.addTodo(todoItem(taskName, "", ""));
-      render();
+      renderTasks();
 
       taskForm.reset();
     });
+  };
+
+  const setupNavListeners = () => {
+    const newProjBtn = document.querySelector(".add-project");
+    const closeProjBtn = document.querySelector(".close-project");
+    const submitProjBtn = document.querySelector(".submit-project");
+    const projInput = document.querySelector(".new-project-input");
+
+    newProjBtn.addEventListener("click", () => {
+      projInput.classList.add("active");
+    });
+
+    closeProjBtn.addEventListener("click", () => {
+      projInput.classList.remove("active");
+    });
+
+    submitProjBtn.addEventListener("click", () => {
+      const projNameInput = document.querySelector(".proj-name");
+      todoController.addProject(projNameInput.value);
+      projNameInput.value = "";
+      renderProjects();
+    });
+  };
+
+  const setupEventListeners = () => {
+    todoContainer.addEventListener("click", (ev) => {
+      const { target } = ev;
+
+      if (target.classList.contains("complete")) {
+        const currProject = todoController.getCurrProject();
+        currProject.removeTodo(parseInt(target.dataset.index, 10));
+        renderTasks();
+      }
+    });
+
+    setupFormListeners();
+    setupNavListeners();
   };
 
   // Initial render.

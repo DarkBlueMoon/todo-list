@@ -6,7 +6,7 @@ export default function TodoController() {
   let currProject = null;
 
   const addProject = (project) => {
-    projects.push(project);
+    projects.push(projectItem(project));
   };
 
   // Most likely index will be a data attribute
@@ -21,10 +21,10 @@ export default function TodoController() {
   };
 
   (() => {
-    addProject(projectItem("Default"));
-    addProject(projectItem("Personal"));
-    addProject(projectItem("Work"));
-    addProject(projectItem("Errands"));
+    addProject("Default");
+    addProject("Personal");
+    addProject("Work");
+    addProject("Errands");
   })();
 
   setCurrProject(projects[1]);

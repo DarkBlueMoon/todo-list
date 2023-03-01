@@ -10,6 +10,7 @@ body {
 
 .container {
   display: flex;
+  /* height: 100%; */
 }
 
 .navigation {
@@ -19,10 +20,19 @@ body {
 .projects-container {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .add-project {
   width: 100%;
+}
+
+.new-project-input {
+  display: none;
+}
+
+.new-project-input.active {
+  display: block;
 }
 
 .project-content {
@@ -41,5 +51,9 @@ body {
 }
 
 .form-container {
-  visibility: hidden;
+  display: none;
+}
+
+.form-container.active {
+  display: block;
 }
