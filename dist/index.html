@@ -4,56 +4,67 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
+    <title>ToDo List</title>
   </head>
   <body>
     <div class="container">
-      <section class="sidebar">
-        <nav class="navigation">
-          <!-- Houses the individual project buttons. -->
-          <div class="projects-container"></div>
-          <button type="button" class="add-project">+ New Project</button>
-          <div class="new-project-input">
-            <input type="text" class="proj-name" />
-            <button type="button" class="submit-project">Submit</button>
-            <button type="button" class="close-project">Close</button>
-          </div>
-        </nav>
-      </section>
-      <section class="project-content">
-        <h1 class="project-title"></h1>
-
-        <div class="todo-container"></div>
-        <button type="button" class="add-task">+ Add Task</button>
-
-        <div class="new-task-container">
-          <div class="row">
-            <label for="task-name">Task:</label>
-            <input type="text" id="task-name" name="task-name" required />
-          </div>
-          <div class="row">
-            <label for="task-desc">Details:</label>
-            <input type="text" id="task-desc" name="task-desc" />
-          </div>
-          <div class="row">
-            <label for="task-priority">Priority:</label>
-            <select name="task-priority" id="task-priority">
-              <option value="">--Please choose an option--</option>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </select>
-          </div>
-          <div class="btn-container">
-            <div class="form-button submit">
-              <button type="button" class="submit-btn">Submit</button>
+      <header class="header">
+        <h1>ToDo List</h1>
+      </header>
+      <main class="main-content">
+        <section class="sidebar">
+          <nav class="navigation">
+            <!-- Houses the individual project buttons. -->
+            <div class="projects-container"></div>
+            <button type="button" class="add-project">+ New Project</button>
+            <div class="new-project-input">
+              <input type="text" class="proj-name" />
+              <button type="button" class="submit-project">Submit</button>
+              <button type="button" class="close-project">Close</button>
             </div>
-            <div class="form-button close">
-              <button type="button" class="close-btn">Close</button>
+          </nav>
+        </section>
+
+        <section class="project-content">
+          <h1 class="project-title"></h1>
+
+          <div class="todo-container"></div>
+          <button type="button" class="add-task">+ Add Task</button>
+
+          <div class="new-task-container">
+            <div class="row">
+              <label for="task-name">Task:</label>
+              <input type="text" id="task-name" name="task-name" required />
+            </div>
+            <div class="row">
+              <label for="task-desc">Details:</label>
+              <input type="text" id="task-desc" name="task-desc" />
+            </div>
+            <div class="row">
+              <label for="task-priority">Priority:</label>
+              <select name="task-priority" id="task-priority">
+                <option value="">--Please choose an option--</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="btn-container">
+              <div class="form-button submit">
+                <button type="button" class="submit-btn">Submit</button>
+              </div>
+              <div class="form-button close">
+                <button type="button" class="close-btn">Close</button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
+
+      <footer class="footer">
+        Project by: Demetri Evans
+        <a href="https://github.com/DarkBlueMoon/todo-list">@darkbluemoon</a>
+      </footer>
     </div>
 
     <script src="main.js"></script>

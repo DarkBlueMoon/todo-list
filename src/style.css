@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Lato";
+  src: url("./Lato-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,25 +13,60 @@
 
 body {
   height: 100vh;
+  font-family: "Lato", sans-serif;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   height: 100%;
+  border: 1px solid black;
 }
 
-.navigation {
-  width: 300px;
+.header {
+  text-align: center;
+  padding: 0.25rem;
+  background-color: darkblue;
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  background-color: #ccc;
+  padding-left: 20px;
+  width: 250px;
 }
 
 .projects-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  padding-top: 1.5rem;
 }
 
+.project,
 .add-project {
-  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+  padding: 6px 20px;
+  width: 90%;
+}
+
+.project:hover,
+.add-project:hover {
+  background-color: #333;
+  color: white;
+}
+
+.project.active {
+  background-color: #777;
 }
 
 .new-project-input {
@@ -53,4 +95,15 @@ body {
 
 .new-task-container.active {
   display: block;
+}
+
+.footer {
+  text-align: center;
+  padding: 0.25rem;
+  background-color: #555;
+  color: white;
+}
+
+.footer a {
+  color: white;
 }

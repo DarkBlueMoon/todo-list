@@ -65,6 +65,7 @@ export default function ScreenController() {
       const taskNameInput = document.getElementById("task-name");
 
       const currProject = todoController.getCurrProject();
+      // TODO: Make taskNameInput required.
       currProject.addTodo(todoItem(taskNameInput.value, "", ""));
       taskNameInput.value = "";
 
@@ -94,15 +95,29 @@ export default function ScreenController() {
     });
   };
 
+  const clearActive = (parentElem) => {
+    [...parentElem.children].forEach((child) => {
+      child.classList.remove("active");
+    });
+  };
+
   const setupProjButtonListeners = () => {
-    const newTaskContainer = document.querySelector(".new-task-container");
+    // const newTaskContainer = document.querySelector(".new-task-container");
 
-    projContainer.addEventListener("click", (ev) => {
-      const { target } = ev;
+    const projBtns = [...projContainer.children];
 
-      todoController.setCurrProject(target.dataset.index);
-      newTaskContainer.classList.remove("active");
-      renderTasks();
+    projBtns.forEach((btn) => {
+      btn.addEventListener("click", (ev) => {
+        const { target } = ev;
+
+        const parent = target.parentElement;
+
+        clearActive(parent);
+
+        target.classList.add("active");
+        todoController.setCurrProject(target.dataset.index);
+        renderTasks();
+      });
     });
   };
 
@@ -122,8 +137,13 @@ export default function ScreenController() {
     setupProjButtonListeners();
   };
 
+  const setInitialActiveProject = () => {
+    [...projContainer.children][0].classList.add("active");
+  };
+
   // Initial render.
   renderTasks();
   renderProjects();
   setupEventListeners();
+  setInitialActiveProject();
 }
